@@ -11,16 +11,28 @@ import java.util.Map.Entry;
 
 public class DataHandler {
 
-	private Map<String, String> dataMap = new HashMap<>();
-	private String dataFolder = System.getenv("LOCALAPPDATA");
+	private Map<String, String> dataMap;
+	private String OS;
+	private String home;
+	private String dataFolder="";
+	
+	public DataHandler() {
+		dataMap = new HashMap<String, String>();
+		OS = System.getProperty("os.name").toLowerCase();
+		home = System.getProperty("user.home");
+		
+		if(OS.contains("windows")) dataFolder = System.getenv("LOCALAPPDATA");
+		else if(OS.contains("mac")) dataFolder = home + File.separator + "Library";
+		else dataFolder = DataHandler.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+	}
 	
 	public void save() {
-		File dir = new File(dataFolder+"/Sakura");
+		File dir = new File(dataFolder+File.separator+"Sakura");
 		if (!dir.exists()){
 			dir.mkdirs();
 		}
 		
-		File dataFile = new File(dir+"/data.dat");
+		File dataFile = new File(dir+File.separator+"data.dat");
 		if(!dataFile.exists()) {try {
 			dataFile.createNewFile();
 		} catch (IOException e) {
@@ -47,12 +59,12 @@ public class DataHandler {
 	
 	public void load() {
 		dataMap.clear();
-		File dir = new File(dataFolder+"/Sakura");
+		File dir = new File(dataFolder+File.separator+"Sakura");
 		if (!dir.exists()){
 			dir.mkdirs();
 		}
 		
-		File dataFile = new File(dir+"/data.dat");
+		File dataFile = new File(dir+File.separator+"data.dat");
 		if(dataFile.exists()) {
 			try {
 				BufferedReader br = new BufferedReader(new FileReader(dataFile.getAbsolutePath()));
