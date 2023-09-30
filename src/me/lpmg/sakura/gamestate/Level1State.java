@@ -29,10 +29,10 @@ public class Level1State extends GameState {
 	public void init() {
 		eM = new EntityManager();
 		
-		player = new Player(19*3, 29*3, 400, 500);
+		player = new Player(19*3, 29*3, 400, 500, dim);
 		map1 = new Map("/maps/map1.map");
 		map3 = new Map("/maps/map1-3.map");
-		gC = new GameCamera(player, map1);
+		gC = new GameCamera(player, map1, dim);
 		
 		portal=new Rectangle(2*Block.blockSize+40, 9*Block.blockSize-16, 1*Block.blockSize-20, 2*Block.blockSize);
 		

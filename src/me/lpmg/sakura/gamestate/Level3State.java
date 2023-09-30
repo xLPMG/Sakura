@@ -28,12 +28,12 @@ public class Level3State extends GameState {
 	public void init() {
 		eM = new EntityManager();
 		
-		player = new Player(19*3, 29*3, 128, 256);
+		player = new Player(19*3, 29*3, 128, 256, dim);
 		map1 = new Map("/maps/map3-1.map");
 		map2 = new Map("/maps/map3-2.map");
 		map3 = new Map("/maps/map3-3.map");
 		map4 = new Map("/maps/map3-4.map");
-		gC = new GameCamera(player, map1);
+		gC = new GameCamera(player, map1, dim);
 		
 		portal=new Rectangle(4423+32, 1321,  1*Block.blockSize-20, 2*Block.blockSize);
 		

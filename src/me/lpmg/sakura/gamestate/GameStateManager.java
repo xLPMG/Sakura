@@ -1,5 +1,6 @@
 package me.lpmg.sakura.gamestate;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.Stack;
 
@@ -12,8 +13,12 @@ public class GameStateManager {
 	private int currentLevel=1;
 	private int kills=0;
 	private boolean exit = false;
+	private Dimension dim;
 	
-	public GameStateManager(DataHandler dataHandler) {
+	
+	public GameStateManager(DataHandler dataHandler, Dimension dim) {
+		this.dim = dim;
+		
 		states = new Stack<GameState>();
 		states.push(new MenuState(this));
 		this.dataHandler = dataHandler;
@@ -67,5 +72,13 @@ public class GameStateManager {
 	
 	public boolean getExit() {
 		return exit;
+	}
+
+	public Dimension getDimension() {
+		return dim;
+	}
+
+	public void setDimension(Dimension dim) {
+		this.dim = dim;
 	}
 }

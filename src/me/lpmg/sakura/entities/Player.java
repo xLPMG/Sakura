@@ -1,6 +1,7 @@
 package me.lpmg.sakura.entities;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -29,6 +30,7 @@ public class Player implements Entity {
 
 	private double x, y;
 	private int width, height;
+	private Dimension dim;
 	private int slideWidth, slideHeight, orgWidth, orgHeight;
 	private double defaultSpeed = 2.8;
 	private double moveSpeed = defaultSpeed;
@@ -47,11 +49,12 @@ public class Player implements Entity {
 
 	private EntityManager eM;
 
-	public Player(int width, int height, int x, int y) {
-		this.x = x;
-		this.y = y;
+	public Player(int width, int height, int x, int y, Dimension dim) {
 		this.width = width;
 		this.height = height;
+		this.x = x;
+		this.y = y;
+		this.dim = dim;
 		slideWidth = width * 2;
 		slideHeight = height / 2;
 		orgWidth = width;
@@ -330,20 +333,20 @@ public class Player implements Entity {
 
 	public void drawEntityGUI(Graphics g) {
 		if (health == 3) {
-			g.drawImage(Images.player_health_3[0], (int) GamePanel.WIDTH - 263, (int) 16, 247, 76, null);
+			g.drawImage(Images.player_health_3[0], (int) dim.width - 263, (int) 16, 247, 76, null);
 		}
 		if (health == 2) {
-			g.drawImage(Images.player_health_2[0], (int) GamePanel.WIDTH - 263, (int) 16, 247, 76, null);
+			g.drawImage(Images.player_health_2[0], (int) dim.width - 263, (int) 16, 247, 76, null);
 		}
 		if (health == 1) {
-			g.drawImage(Images.player_health_1[0], (int) GamePanel.WIDTH - 263, (int) 16, 247, 76, null);
+			g.drawImage(Images.player_health_1[0], (int) dim.width - 263, (int) 16, 247, 76, null);
 		}
 		g.setFont(new Font("New Courier", Font.PLAIN, 48));
 		g.setColor(Color.white);
 		g.drawString(level + "", 16, 48);
 
 		g.setFont(new Font("New Courier", Font.PLAIN, 16));
-		g.drawString("X: " + (int) x + " Y:  " + (int) y, GamePanel.WIDTH / 2, 24);
+		g.drawString("X: " + (int) x + " Y:  " + (int) y, dim.width / 2, 24);
 	}
 
 	public void keyPressed(int k) {

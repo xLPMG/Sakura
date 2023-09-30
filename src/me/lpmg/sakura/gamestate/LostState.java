@@ -67,22 +67,22 @@ public class LostState extends GameState {
 
 	public void draw(Graphics g) {
 		g.setColor(Color.black);
-		g.fillRect(0, 0, GamePanel.WIDTH, GamePanel.HEIGHT);
+		g.fillRect(0, 0, dim.width, dim.height);
 
 		g.setFont(new Font("New Courier", Font.PLAIN, 48));
 		g.setColor(Color.white);
 		FontMetrics metrics = g.getFontMetrics(new Font("New Courier", Font.PLAIN, 48));
-		int x = (int) ((GamePanel.WIDTH - metrics.stringWidth(text)) / 2);
-		int x2 = (int) ((GamePanel.WIDTH - metrics.stringWidth(text2)) / 2);
+		int x = (int) ((dim.width - metrics.stringWidth(text)) / 2);
+		int x2 = (int) ((dim.width - metrics.stringWidth(text2)) / 2);
 
 		if (!done1) {
-			g.drawString(text.substring(0, (int) (charPosition / 6)) + "_", x, (GamePanel.HEIGHT / 2));
+			g.drawString(text.substring(0, (int) (charPosition / 6)) + "_", x, (dim.height / 2));
 		} else if(done1 && !done2){
-			g.drawString(text, x, (GamePanel.HEIGHT / 2));
-			g.drawString(text2.substring(0, (int) (charPosition2 / 6)) + "_", x2, (GamePanel.HEIGHT / 2) + 48);
+			g.drawString(text, x, (dim.height / 2));
+			g.drawString(text2.substring(0, (int) (charPosition2 / 6)) + "_", x2, (dim.height / 2) + 48);
 		}else {
-			g.drawString(text, x, (GamePanel.HEIGHT / 2));
-			g.drawString(text2, x2, (GamePanel.HEIGHT / 2) + 48);
+			g.drawString(text, x, (dim.height / 2));
+			g.drawString(text2, x2, (dim.height / 2) + 48);
 		}
 
 	}

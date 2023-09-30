@@ -17,7 +17,7 @@ public class MenuState extends GameState {
 	private int currentSelection = 0;
 
 	Image bg = Util.loadImage("menu_background.png");
-	Image bgScaled = bg.getScaledInstance(GamePanel.WIDTH, GamePanel.HEIGHT, Image.SCALE_SMOOTH);
+	Image bgScaled = bg.getScaledInstance(dim.width, dim.height, Image.SCALE_SMOOTH);
 	BufferedImage menu_play;
 	BufferedImage menu_help;
 	BufferedImage menu_quit;
@@ -42,16 +42,16 @@ public class MenuState extends GameState {
 	}
 
 	public void draw(Graphics g) {
-		g.drawImage(bgScaled, 0, 0, GamePanel.WIDTH+10, GamePanel.HEIGHT+10, null);
+		g.drawImage(bgScaled, 0, 0, dim.width+10, dim.height+10, null);
 		if (currentSelection == 0) {
-			g.drawImage(menu_play, (GamePanel.WIDTH / 2) - (GamePanel.WIDTH / 4) / 2, GamePanel.HEIGHT / 6,
-					GamePanel.WIDTH / 4, menu_play.getHeight() * (GamePanel.WIDTH / 4) / menu_play.getWidth(), null);
+			g.drawImage(menu_play, (dim.width / 2) - (dim.width / 4) / 2, dim.height / 6,
+					dim.width / 4, menu_play.getHeight() * (dim.width / 4) / menu_play.getWidth(), null);
 		}else if(currentSelection == 1){
-			g.drawImage(menu_help, (GamePanel.WIDTH / 2) - (GamePanel.WIDTH / 4) / 2, GamePanel.HEIGHT / 6,
-					GamePanel.WIDTH / 4, menu_help.getHeight() * (GamePanel.WIDTH / 4) / menu_help.getWidth(), null);
+			g.drawImage(menu_help, (dim.width / 2) - (dim.width / 4) / 2, dim.height / 6,
+					dim.width / 4, menu_help.getHeight() * (dim.width / 4) / menu_help.getWidth(), null);
 		}else if(currentSelection == 2){
-			g.drawImage(menu_quit, (GamePanel.WIDTH / 2) - (GamePanel.WIDTH / 4) / 2, GamePanel.HEIGHT / 6,
-					GamePanel.WIDTH / 4, menu_quit.getHeight() * (GamePanel.WIDTH / 4) / menu_quit.getWidth(), null);
+			g.drawImage(menu_quit, (dim.width / 2) - (dim.width / 4) / 2, dim.height / 6,
+					dim.width / 4, menu_quit.getHeight() * (dim.width / 4) / menu_quit.getWidth(), null);
 		}
 
 	}
